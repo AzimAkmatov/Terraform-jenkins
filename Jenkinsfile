@@ -6,11 +6,12 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
     }
 
-    stage('checkout') {
-      steps {
-        checkout scm
-      }
-    }
+    stages {
+        stage('Clone repository') {
+            steps {
+                git 'https://github.com/your-repo.git'
+            }
+        }
 
         stage('Terraform Init') {
             steps {
